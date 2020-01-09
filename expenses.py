@@ -23,7 +23,7 @@ class Expense(NamedTuple):
     category_name: str
 
 
-def add_expense(raw_message: str) -> Expense:
+def add_expense(raw_message: str, user_id: int) -> Expense:
     """Добавляет новое сообщение.
     Принимает на вход текст сообщения, пришедшего в бот."""
     parsed_message = _parse_message(raw_message)
@@ -31,6 +31,7 @@ def add_expense(raw_message: str) -> Expense:
         parsed_message.category_text)
     inserted_row_id = db.insert("expense", {
         "amount": parsed_message.amount,
+        "user_id": user_id,
         "created": _get_now_formatted(),
         "category_codename": category.codename,
         "raw_text": raw_message

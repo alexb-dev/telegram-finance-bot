@@ -12,6 +12,7 @@ create table category(
 
 create table expense(
     id integer primary key,
+    user_id integer,
     amount integer,
     created datetime,
     category_codename integer,

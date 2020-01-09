@@ -90,8 +90,11 @@ async def list_expenses(message: types.Message):
 @dp.message_handler()
 async def add_expense(message: types.Message):
     """Добавляет новый расход"""
+    #check user id
+    user_id = message.from_user.id
+
     try:
-        expense = expenses.add_expense(message.text)
+        expense = expenses.add_expense(message.text, message.from_user.id)
     except exceptions.NotCorrectMessage as e:
         await message.answer(str(e))
         return
