@@ -20,10 +20,13 @@ PROXY_AUTH = aiohttp.BasicAuth(
     password=os.getenv("TELEGRAM_PROXY_PASSWORD")
 )
 ACCESS_ID = os.getenv("TELEGRAM_ACCESS_ID")
+ACCESS_IDS = os.getenv("TELEGRAM_ACCESS_IDS")
+
+
 
 bot = Bot(token=API_TOKEN, proxy=PROXY_URL, proxy_auth=PROXY_AUTH)
 dp = Dispatcher(bot)
-dp.middleware.setup(AccessMiddleware(ACCESS_ID))
+dp.middleware.setup(AccessMiddleware(ACCESS_IDS))
 
 
 @dp.message_handler(commands=['start', 'help'])
@@ -92,7 +95,8 @@ async def add_expense(message: types.Message):
     """Добавляет новый расход"""
     #check user id
     user_id = message.from_user.id
-
+    #debug
+    print (message.from_user.id, message.text)
     try:
         expense = expenses.add_expense(message.text, message.from_user.id)
     except exceptions.NotCorrectMessage as e:

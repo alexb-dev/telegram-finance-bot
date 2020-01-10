@@ -22,15 +22,15 @@ create table expense(
 
 insert into category (codename, name, is_base_expense, aliases)
 values
-    ("products", "продукты", true, "еда"),
+    ("products", "food", true, "еда, food, grocery, groceries"),
+    ("amazon", "amazon", true, "amazon"),
     ("coffee", "кофе", true, ""),
-    ("dinner", "обед", true, "столовая, ланч, бизнес-ланч, бизнес ланч"),
-    ("cafe", "кафе", true, "ресторан, рест, мак, макдональдс, макдак, kfc, ilpatio, il patio"),
-    ("transport", "общ. транспорт", false, "метро, автобус, metro"),
+    ("lunch", "обед", true, "столовая, ланч, бизнес-ланч, бизнес ланч, lunch"),
+    ("cafe", "кафе", true, "cafe, ресторан, рест, мак, макдональдс, макдак, kfc, ilpatio, il patio"),
+    ("transport", "транспорт", false, "taxi, ferry, метро, автобус, metro"),
     ("taxi", "такси", false, "яндекс такси, yandex taxi"),
-    ("phone", "телефон", false, "теле2, связь"),
+    ("phone", "телефон", false, "теле2, связь, phone, cell, inet, comcast"),
     ("books", "книги", false, "литература, литра, лит-ра"),
-    ("internet", "интернет", false, "инет, inet"),
     ("subscriptions", "подписки", false, "подписка"),
     ("other", "прочее", true, "");
 
